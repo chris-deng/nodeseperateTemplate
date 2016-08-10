@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+{% include "../variables.html" %}
+{% include "./leftmenu.html" %}
+<meta charset="utf-8">
+<title>{% block title %}My Site{% endblock %}</title>
+{% include "./head.html" %}
+{# 公共样式区 #}
+{% include "./css.html" %}
+{# 公用脚本区 #}
+{% include "./js.html" %}
+{# 页面头部 #}
+{% block head %}{% endblock %}
+</head>
+<body>
+{# regular-ui脚本，只能放到body标签内部，否则报错 #}
+<!-- rgui -->
+<script src="/lib/regular-ui/js/regular-ui.min.js"></script>
+
+
+{# 左侧导航栏 #}
+{{ leftMenu() }}
+
+{# 右侧内容区 #}
+<div class="g-bd"><div class="g-bdc">
+    {% block content %}{% endblock %}
+</div></div>
+
+{# 页面脚本区 #}
+{% block script %}{% endblock %}
+
+</body>
+</html>

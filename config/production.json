@@ -1,0 +1,6 @@
+{
+  "port":8888,
+  "appPath":"app",
+  "viewsPath":"/views/dist",
+  "staticPath":["/dist"]
+}

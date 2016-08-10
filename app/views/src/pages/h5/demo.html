@@ -1,0 +1,29 @@
+{% extends "../../common/h5/layout.html" %}
+{% import "../../common/h5/macro.html" as macros %}
+
+{# % set WAP_SHARE_IMG = "400*400 shareImgUrl" % #}
+
+{# meta信息 #}
+{{ macros.meta("h5的demo页面") }}
+
+{# head头部 #}
+{% block head %}
+{{ macros.meta("h5的demo页面") }}
+{% parent %}
+<link rel="stylesheet" href="/css/h5/demo/index.css"/>
+{% endblock %}
+
+{# 内容区域 #}
+{% block body %}
+{% parent %}
+<div id="box">
+    <h2 style="text-align: center;">{{text}}</h2>
+    <div class="logo-kaola"></div>
+</div>
+<!-- @SCRIPT -->
+<script>
+    window.text = {{text | safe | json}};
+</script>
+<!--<script src="/res/js/h5/wap.util.js"></script>-->
+<script src="/js/h5/demo/index.js"></script>
+{% endblock %}

@@ -1,0 +1,17 @@
+$remBase?=100;
+
+.h5-test{
+    color: red;
+}
+h2{
+    font-size:40rem / $remBase;
+    padding: (30rem / $remBase) 0;
+}
+.logo-kaola{
+    //394和404为该图在视觉稿上的px像素宽度值，通过除以一个基准值，转换成rem
+    height: 394rem / $remBase;
+    width: 404rem / $remBase;
+    background-color: transparent;
+    background-size: (394rem / $remBase) (404rem / $remBase) ;
+    margin: 0 auto;
+}

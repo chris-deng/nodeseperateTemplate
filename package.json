@@ -1,0 +1,69 @@
+{
+  "name": "full-stack-template",
+  "private": true,
+  "author": "",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "startMockServer": "supervisor --harmony --watch app/mock/mockServer.js app/mock/mockServer.js"
+  },
+  "dependencies": {
+    "co": "^4.6.0",
+    "co-body": "^4.2.0",
+    "co-busboy": "^1.3.1",
+    "colors": "^1.1.2",
+    "config": "^1.20.1",
+    "crypto": "0.0.3",
+    "debug": "^2.2.0",
+    "hessian.js": "^2.1.8",
+    "http-proxy": "^1.14.0",
+    "https": "^1.0.0",
+    "i": "^0.3.5",
+    "js-to-java": "^2.3.5",
+    "koa": "^1.2.0",
+    "koa-bodyparser": "^2.2.0",
+    "koa-favicon": "^1.2.1",
+    "koa-gzip": "^0.1.0",
+    "koa-json": "^1.1.3",
+    "koa-log4js": "0.0.1",
+    "koa-mongo": "^0.5.0",
+    "koa-mount": "^1.3.0",
+    "koa-router": "^5.4.0",
+    "koa-session": "^3.3.1",
+    "koa-static": "^2.0.0",
+    "koa-swig": "^2.2.0",
+    "koa-views": "^4.1.0",
+    "lodash": "^4.14.1",
+    "memory-cache": "^0.1.6",
+    "moment": "^2.13.0",
+    "node-notifier": "^4.6.0",
+    "npm": "^3.9.0",
+    "npm-run-all": "^2.1.1",
+    "path-to-regexp": "^1.5.3",
+    "probe-image-size": "^2.1.0",
+    "querystring": "^0.2.0",
+    "request": "^2.72.0",
+    "superagent": "^2.0.0",
+    "swig": "^1.4.2",
+    "thunkify": "^2.1.2",
+    "underscore": "^1.8.3",
+    "util": "^0.10.3",
+    "winston": "^2.2.0",
+    "xml2js": "^0.4.17"
+  },
+  "devDependencies": {
+    "cross-env": "^1.0.8",
+    "shelljs": "^0.7.0",
+    "supervisor": "^0.11.0",
+    "pm2": "^1.1.3"
+  },
+  "bugs": {
+    "url": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "ISC"
+}

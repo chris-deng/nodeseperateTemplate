@@ -1,0 +1,10 @@
+{
+  "port":8888,
+  "remoteServer":{
+    "host": "http://127.0.0.1",
+    "port": 3333
+  },
+  "appPath":"app",
+  "viewsPath":"/views/src",
+  "staticPath":["/dist"]
+}

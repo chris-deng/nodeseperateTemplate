@@ -1,0 +1,12 @@
+{% extends './error.html' %}
+
+{% block title %}401 unauthorized{% endblock %}
+
+{% block head %}
+{% parent %}
+<!--<link rel="stylesheet" href="/css/error/error.css">-->
+{% endblock %}
+
+{% block content %}
+<div class="detail">{{err.status}}, {{err.detailInfo}}</div>
+{% endblock %}

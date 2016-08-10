@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% block head%}
+		{# base.css东西太少，直接加到每个独立页面的css里头去好了，节省一条请求 #}
+		<!--<link rel="stylesheet" href="/res/css/h5/base.css" />-->
+	{% endblock %}
+	<script src="/js/h5/base.js"></script>
+</head>
+<body>
+	{% block body %}
+
+	{% endblock %}
+</body>
+</html>
+
+
+

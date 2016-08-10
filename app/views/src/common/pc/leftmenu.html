@@ -1,0 +1,24 @@
+{% macro leftMenu %}
+<div class="g-sd" >
+    <div class="head">
+        <a href="/" class="logo"></a>
+        <h1>Froguard系统</h1>
+        <p style="margin-top:6px;">{{user.name || 'user'}}</p>
+        <p style="margin:6px 0 10px;border-top:1px solid #333;padding-top:5px;"><a class="s-fc-white" href="/logout">退出</a></p>
+    </div>
+    <div class="active">
+        <h3 class="nav-header">1111</h3>
+        <ul class="nav-pills">
+            <li><a href="/xxx/index" class="link selected">hahahaha</a></li>
+            <li><a href="/xxx/create" class="link">hahahaha</a></li>
+        </ul>
+    </div>
+    <div>
+        <h3 class="nav-header">2222</h3>
+        <ul class="nav-pills">
+            <li><a href="/xxx/index" class="link">hahahah</a></li>
+            <li><a href="/xxx/create" class="link">hahahah</a></li>
+        </ul>
+    </div>
+</div>
+{% endmacro %}

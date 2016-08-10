@@ -1,0 +1,8 @@
+{
+  "input": "./",
+  "outport": "../../src/css/",
+  "format": 3,
+  "watch": 2,
+  "exclude": "(\\\\|\\/)_",
+  "include": "./common"
+}

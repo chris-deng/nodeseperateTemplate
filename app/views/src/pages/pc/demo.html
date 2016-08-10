@@ -1,0 +1,22 @@
+{% extends '../../common/pc/layout.html' %}
+
+{% block title %}PC-demo{% endblock %}
+
+{% block head %}
+{% parent %}
+<!--<link rel="stylesheet" href="/css/pc/demo/index.css">-->
+{% endblock %}
+
+{% block content %}
+<h2 style="text-align: center;font-size:30px;padding:20px 0;">{{text}}</h2>
+<div class="logo-kaola"></div>
+<div id="box"></div>
+{% endblock %}
+
+{% block script %}
+<!-- @SCRIPT -->
+<script>
+window.text = {{text | safe | json}};
+</script>
+<script src="/js/pc/demo/index.js"></script>
+{% endblock %}

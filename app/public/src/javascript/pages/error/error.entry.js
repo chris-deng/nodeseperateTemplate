@@ -1,0 +1,1 @@
+require('css_path/common/error.css');

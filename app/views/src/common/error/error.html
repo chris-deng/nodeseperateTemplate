@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+{% include "../variables.html" %}
+<meta charset="utf-8">
+<title>{% block title %}出错了！{% endblock %}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="renderer" content="webkit">
+<link rel="shortcut icon" href="/res/images/favicon.ico">
+<!--<link rel="stylesheet" href="/css/error/error.css">-->
+<style>
+h1,h2,h3,p.div{font-family:"YaHei Consolas Hybrid", Consolas, "Liberation Mono", Menlo, Courier, monospace;padding:0}h1,h2,h3{font-style:italic;font-weight:bold}h3,p,.detail{font-size:16px}h1{font-size:26px;margin:15px}h3{margin:0 15px 15px}p,.detail{padding-left:10px}p{color:#666;margin:0 15px 15px}.detail{color:#333;margin:0 15px 25px}
+</style>
+{% block head %}{% endblock %}
+</head>
+<body>
+<div id="error-info">
+<h1>Error!</h1>
+<p>Oops...U`ve got something wrong!</p>
+<h3>Detail:</h3>
+{% block content %}{% endblock %}
+<script>
+var errorInfo = {{err | safe | json}};
+console.warn(errorInfo);
+</script>
+</div>
+<!--<script src="/js/error/error.js"></script>-->
+{% block script %}{% endblock %}
+</body>
+</html>

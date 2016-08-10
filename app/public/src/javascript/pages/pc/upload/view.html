@@ -1,0 +1,10 @@
+<h1 class="up-title">图片上传</h1>
+
+<uploader url="/uploadimg" extensions="jpg,png,gif,bmp" maxSize="2048kB"
+          on-success={this._onSuccess($event)}
+          on-error={this._onError($event)} ><a class="btn-upload">上传图片</a></uploader>
+
+<div class="preview" r-hide="{!imgUrl}">
+    <p><input type="text" value={imgUrl}/><a id="btnCopy" href="javascript:void(0);" r-class="{{'z-copied':btnCopyText!=0}}" class="u-btn">{(btnCopyText==0?'复制':'已复制')}</a></p>
+    <p><img ref="previewImg" src="{imgUrl}" alt="{imgUrl}"></p>
+</div>

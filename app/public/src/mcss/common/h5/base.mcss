@@ -1,0 +1,8 @@
+/* config */
+@abstract '../_config.mcss';
+
+/* reset */
+@import '_reset.mcss';
+
+/* 加载favicon.ico */
+.load-favicon-image{$loadFavicon();}

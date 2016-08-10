@@ -1,0 +1,5 @@
+@abstract 'mass/_index.mcss';
+
+/* just 4 load favicon.ico file */
+$loadFavicon ?= (){ background-image: url("../../../resource/images/favicon.ico"); display: none; }
+

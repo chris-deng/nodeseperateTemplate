@@ -1,0 +1,28 @@
+{% macro meta title %}
+	<meta charset="UTF-8">
+	<title>{{title}}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no, email=no" />
+	{# 设置手机浏览器中添加到个人收藏、添加书签、添加到主屏幕等的图标,2016-01-14,hzsongfeixiang #}
+	<link href="//xxx.png" rel="apple-touch-icon-precomposed" />
+
+	{# dns-prefetch #}
+	{{ dnsprefetch() }}
+
+	{# 引入REM缩放JS代码，初始化rem想关信息 #}
+	{{ rem() }}
+
+{% endmacro %}
+
+
+{% macro dnsprefetch() %}
+	<link rel="dns-prefetch" href="">
+{% endmacro %}
+
+
+{% macro rem() %}
+{# 压缩前的rem源码请详见 app/piblic/src/javascript/common/initRem.js #}
+<script>(function(d){var b=d.remInfo||{},c=null;function a(f,i){i=i||100;f=f||640;var k=d.document.documentElement;var g=Math.min(k.clientWidth,f);var l=g/(f/i);k.style.fontSize=l+"px";var h=parseFloat(window.getComputedStyle(document.documentElement)["font-size"]);if(h!==l&&h>0&&Math.abs(h-l)>1){var j=l*l/h;k.style.fontSize=j+"px";l=j}b.rem=l+"px"}function e(){!!c&&clearTimeout(c);c=setTimeout(function(){a(b.uiWidth,b.cssBase)},100)}b.updateRemParams=function(g,f){this.uiWidth=g||640;this.cssBase=f||100;e()};b.updateRemParams(640,100);d.addEventListener("resize",function(){e()},false);d.addEventListener("pageshow",function(f){!!f&&!!f.persisted&&e()},false);d.remInfo=b})(window);</script>
+{% endmacro %}
