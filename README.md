@@ -29,6 +29,11 @@ node负责：
 
 ...
 
+该‘代理转发方式实现前后端分离’借鉴：[jinze](https://g.hz.netease.com/u/jinze)的方式，该方式已经在pop项目中得到很好的应用
+
+详情[基于代理转发的前后端分离开发](http://ks.netease.com/blog?id=3594)
+
+
 ## 环境搭建
 
 #### 预准备
