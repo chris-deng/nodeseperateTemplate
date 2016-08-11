@@ -37,7 +37,6 @@ node负责：
 #### 下载源码
 ````
 git clone %ssh-linkl%
-git checkout develop
 ````
 
 #### 依赖安装
@@ -49,6 +48,7 @@ npm install
 ````
 
 ## 启动程序
+
 说明：主程入口在app/app.js,常规启动可以启动:
 
 ````
@@ -89,11 +89,16 @@ npm run pack
 启动后，帧听src/javascript中的*.js文件，并输出到dist/目录
 
 
+- **启动主程序之前，请确保已经将mcss编译输出！**
+- **启动主程序之前，请确保已经将前端资源打包完毕！**
+
+
 #### 同时启动多个服务（推荐）
 ````
 npm run startdev
 ````
 会同时启动上面的几个服务（mockserver,mcss,pack,hotserver），如果不想开多个窗口执行的话，这个是个不错的选择
+
 
 #### 检验
 

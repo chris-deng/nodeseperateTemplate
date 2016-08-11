@@ -8,17 +8,21 @@
 var koa = require('koa'),
     config = require('config'),
     http = require('http'),
+    fs = require("fs"),
     path = require("path"),
     swig = require('koa-swig'),
     views = require('koa-views'),
     bodyparser = require('koa-bodyparser'),
     koastatic = require('koa-static'),
+    session = require('koa-session'),
     gzip = require('koa-gzip'),
     json = require('koa-json'),
     mount = require('koa-mount'),
     proxy = require("./middleware/proxy/proxy"),
-    afterProxy = require("./middleware/proxy/after"),
-    proxyRules = require("./middleware/proxy/rules"),
+    proxyRules = require("./middleware/proxy/rules/rules"),
+    proxyWhiteRules = require("./middleware/proxy/rules/whiteRules"),
+    dealUnProxyRules = require("./middleware/proxy/dealUnProxy"),
+    afterProxy = require("./middleware/proxy/afterProxy"),
     JsonError = require('./common/error').JsonError,
     logger = require("./common/logger"),
     colors = require("colors"),
@@ -41,6 +45,16 @@ var isDev = (process.env.NODE_ENV=="development"),
 // var _colors = require("colors"),
 //     colors = isDev ? _colors : prodColors;
 
+// 创建放图片的临时目录
+var tmpDir = 'tmp';
+if (!fs.existsSync(tmpDir)){
+    fs.mkdirSync(tmpDir);
+}
+// 创建日志目录
+var logDir = 'logs';
+if (!fs.existsSync(logDir)){
+    fs.mkdirSync(logDir);
+}
 
 
 /**
@@ -50,13 +64,16 @@ var app = koa(),
     env = app.env;
 
 
-
 // koa-gzip always be the last middleware
 app.use(gzip());
 
 // koa-json default to be disabled (using in production)
 app.use(json());//default
 // app.use(json({ pretty: false, param: 'pretty' }));// 手动开启，不推荐！
+
+// koa-session
+app.keys = ['froguard key'];
+app.use(session(app));
 
 
 
@@ -79,6 +96,7 @@ app.use(mount('/lib', koastatic(__dirname +"/../app/public/thirdpart")));
 app.use(favicon(path.join(__dirname, '/../app/public', 'favicon.ico')));
 
 
+
 // Views(*.html via swig)
 var viewPath = config.get('viewsPath');
 app.use(views(__dirname + viewPath, {
@@ -91,7 +109,10 @@ app.use(views(__dirname + viewPath, {
 
 
 // Config after proxy
-app.use(afterProxy(proxyRules));//afterProxy should be used (app.use()) before proxy
+app.use(afterProxy({
+    rules: proxyRules,
+    whiteRules: proxyWhiteRules
+}));//afterProxy should be used (app.use()) before proxy
 
 
 
@@ -101,6 +122,7 @@ app.use(function* (next){
     try{
         yield* next;
         logger.info('%s %s - %s %sms', this.method, this.url, this.status, new Date - start);
+        console.log(`Logger-watch: status = ${this.status}`);
     }catch(e){
         var status = e.status  || 500;
         var message= e.message || '服务器错误';
@@ -164,7 +186,7 @@ app.use(bodyparser({ formLimit:'5mb' }));
 // Normal http handle
 app.use(function *(next){
     yield next;
-    console.log("Normal-Http-watcher: "+this.status);
+    console.log(`Http-watch  : status = ${this.status}`);
     if (this.status != 200) {
         this.throw(this.status);//将非200的视为异常并主动扔出
     }
@@ -172,10 +194,26 @@ app.use(function *(next){
 
 
 
+// deal un proxy rules (the white rules)
+app.use(dealUnProxyRules({
+    whiteRules: proxyWhiteRules //白名单
+}));
+
+
+
 // Config proxy to java-server
 var rmtServerConfig = config.get('remoteServer'),
     remoteServerUrl = `${rmtServerConfig.host}:${rmtServerConfig.port}`;
-app.use(proxy({target:remoteServerUrl}));
+app.use(proxy({
+    proxyOptions: {
+        target: remoteServerUrl
+    },
+    whiteRules: proxyWhiteRules //白名单内不代理
+}));
+
+
+
+
 
 
 

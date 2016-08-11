@@ -15,7 +15,7 @@
     "mcss": "mcss -c ./src/mcss/mcss.json",
     "pack": "cross-env WEBPACK_ENV=dev   webpack --progress --colors --watch --cache --display-error-details",
     "mockserver":"cd ../../ &&  node --harmony app/mock/mockServer.js",
-    "hotserver": "cd ../../ &&  cross-env NODE_ENV=development  supervisor --harmony --watch configdev,app/common,app/middleware,app/model,app/views/src,app/app.js --ignore app/public app/app.js",
+    "hotserver": "cd ../../ &&  cross-env NODE_ENV=development  supervisor --harmony --watch configdev,app/common,app/middleware,app/controllers,app/views/src,app/app.js --ignore app/public app/app.js",
     "startdev": "run-p  mcss  pack  mockserver  hotserver"
   },
   "dependencies": {
