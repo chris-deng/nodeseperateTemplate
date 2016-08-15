@@ -22,11 +22,11 @@ module.exports = function(options){
         var check = util.checkMatchRules(reqUrl,whiteStrRulesMap,whiteRegexRulesMap);
 
         if(check.isMatch){
-            console.log(`DealUnProxy : url = ${reqUrl}`);
+            console.log(`Deal-UnProxy: url = ${reqUrl}`);
             var val = check.value;
             if(typeof val == "string"){
                 // 情况1.直接render
-                console.log(`     render : tpl = "${val}"`);
+                console.log(`     Render : tpl = "${val}"`);
                 try{
                     let data = (typeof this.body === "object")? this.body : null;
                     if(this.body && this.body.length){
@@ -56,7 +56,7 @@ module.exports = function(options){
 
         }else{
 
-            console.log(`~<Skip>~ DealUnProxy!! url = "${reqUrl}", bacause rules isnot in white-list!`)
+            // console.log(`~<Skip>~ DealUnProxy!! url = "${reqUrl}", bacause rules isnot in white-list!`)
 
         }
         //

@@ -58,7 +58,7 @@ module.exports = {
             url,
             message;
         if(imgsize){
-            console.log(imgsize);
+            // console.log(imgsize);
             var tmp = imgsize.split('*');
             width = tmp[0];
             height = tmp[1]
@@ -69,7 +69,7 @@ module.exports = {
             try{
                 fileWriteStream = fs.createWriteStream(tmpfile);
             }catch(e){
-                console.log("HHHHHHH\r\n",e);
+                console.log(e);
             }
 
             file.pipe(fileWriteStream);

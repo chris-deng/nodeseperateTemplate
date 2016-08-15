@@ -46,7 +46,7 @@ module.exports = function(options) {
 
         if(isInWhiteList){
             // 白名单需要跳过代理
-            console.log(`\r\n~<Skip>~ Proxy!! url = "${reqUrl}" , because the rule is in white-list!`);
+            // console.log(`\r\n~<Skip>~ Proxy!! url = "${reqUrl}" , because the rule is in white-list!`);
 
         }else{
 

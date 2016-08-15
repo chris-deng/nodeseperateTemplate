@@ -125,7 +125,7 @@ app.use(function* (next){
     try{
         yield* next;
         logger.info('%s %s - %s %sms', this.method, this.url, this.status, new Date - start);
-        console.log(`Logger-watch: status = ${this.status}`);
+        // console.log(`Logger-watch: status = ${this.status}`);
     }catch(e){
         var status = e.status  || 500;
         var message= e.message || '服务器错误';
@@ -189,7 +189,7 @@ app.use(bodyparser({ formLimit:'5mb' }));
 // Normal http handle
 app.use(function *(next){
     yield next;
-    console.log(`Http-watch  : status = ${this.status}`);
+    // console.log(`Http-watch  : status = ${this.status}`);
     if (this.status != 200) {
         this.throw(this.status);//将非200的视为异常并主动扔出
     }

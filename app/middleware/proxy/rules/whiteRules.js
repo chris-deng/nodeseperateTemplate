@@ -21,5 +21,6 @@ var cUpload = require("../../../controllers/cUploadFile");
 module.exports = {
     "GET /test-white-rules": "xxxx",
     "GET /upload/image":"pages/pc/upload/upload",
-    "POST /uploadimg": cUpload.uploadIMG
+    "POST /uploadimg": cUpload.uploadIMG,
+    "POST /uploadfile": cUpload.uploadfile
 };

@@ -44,7 +44,7 @@ app.use(function *(next){
         custom = false;
         console.log(colors.red("MockError:\r\n",e.message));
     }
-    if(url=="POST /uploadimg"){//模拟图片上传
+    if(url=="POST /uploadimg" || url=="POST /uploadfile"){//模拟 图片|文件 上传
         this.status = 200;
         this.type = 'text/html';//这里特殊处理是为了兼容ie，（传图nos，浏览器为ie时，在application/json时候，会让用户去下载json文件）
         if(!!custom){

@@ -56,7 +56,7 @@ module.exports = function(options){
                         data = JSON.parse(this.body);
                     }
                     if(typeof tpl === "function"){
-                        console.log("rules-value is a function,calculate it to get tpl...");
+                        // console.log("rules-value is a function,calculate it to get tpl...");
                         tpl = tpl(data);
                     }
                     console.log(`     Render : tpl = '${tpl}.html'`);
@@ -78,7 +78,7 @@ module.exports = function(options){
                 this.remove('transfer-encoding');
             }else{
                 // 其他不需要渲染页面的，eg: 异步数据接口,白名单请求
-                console.log(`After-Proxy: It dosn't need render page, url = "${key}"`);
+                // console.log(`After-Proxy: It dosn't need render page, url = "${key}"`);
             }
         }
         //
