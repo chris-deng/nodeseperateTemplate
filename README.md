@@ -124,9 +124,9 @@ IE9+(主要是前端web-ui部分采用了regular-ui)，FF，Chrome
 ````
 #### 2.实时编译提示：
 
-```html
-建议安装一个Growl程序（仅仅是为了打包提示时候，界面好看一些，没啥特殊功能功能，就是一个提示软件，不装也行）
-````
+建议安装一个
+[Growl](https://g.hz.netease.com/hzwangfei3/soft-download/raw/master/install-package/Growl-window/Growl_v2.0.9.1.zip)
+程序（仅仅是为了打包提示时候，提示界面好看一些，没啥特殊功能功能，就是一个提示软件，不装也行）
 
 
 #### 3.其它文档：
