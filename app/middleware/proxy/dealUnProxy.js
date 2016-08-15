@@ -22,10 +22,11 @@ module.exports = function(options){
         var check = util.checkMatchRules(reqUrl,whiteStrRulesMap,whiteRegexRulesMap);
 
         if(check.isMatch){
-            console.log(`DealUnProxy: url = ${reqUrl}`);
+            console.log(`DealUnProxy : url = ${reqUrl}`);
             var val = check.value;
             if(typeof val == "string"){
                 // 情况1.直接render
+                console.log(`     render : tpl = "${val}"`);
                 try{
                     let data = (typeof this.body === "object")? this.body : null;
                     if(this.body && this.body.length){
@@ -49,6 +50,7 @@ module.exports = function(options){
                 this.remove('transfer-encoding');
             }else{
                 // 情况2.调用Generator-Function
+                console.log("       Deal : invoke function *(next)");
                 yield val;
             }
 

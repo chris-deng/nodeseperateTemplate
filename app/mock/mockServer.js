@@ -12,6 +12,7 @@
  */
 "use strict";
 var path = require('path'),
+    http = require('http'),
     fs = require('fs'),
     koa = require('koa'),
     app = koa(),
@@ -70,4 +71,33 @@ app.use(function *(next){
 });
 
 // start server
-app.listen(port);
+// app.listen(port);
+
+/**
+ * server configuration
+ */
+var server = http.createServer(app.callback());
+server.on('error', function (error) {
+    if (error.syscall !== 'listen') {
+        throw error;
+    }
+    var bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
+    switch (error.code) {
+        case 'EACCES':
+            console.error(colors.red(`MockServer failed！ ${bind} requires elevated privileges`));
+            process.exit(1);
+            break;
+        case 'EADDRINUSE':
+            console.error(colors.red(`MockServer failed！ ${bind} is already in use`));
+            process.exit(1);
+            break;
+        default:
+            throw error;
+    }
+});
+server.on('listening', function () {
+    var addr = server.address();
+    var bind = typeof addr === 'string' ? ('pipe ' + addr ) : ('port ' + addr.port);
+    console.log(colors.green(`Mock-server on ${bind} success!\r\n`));
+});
+server.listen(port);

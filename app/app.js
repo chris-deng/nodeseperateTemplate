@@ -15,6 +15,7 @@ var koa = require('koa'),
     bodyparser = require('koa-bodyparser'),
     koastatic = require('koa-static'),
     session = require('koa-session'),
+    oidAuth= require('./middleware/auth/auth'),
     gzip = require('koa-gzip'),
     json = require('koa-json'),
     mount = require('koa-mount'),
@@ -72,8 +73,10 @@ app.use(json());//default
 // app.use(json({ pretty: false, param: 'pretty' }));// 手动开启，不推荐！
 
 // koa-session
-app.keys = ['froguard key'];
+app.keys = ['kaola key'];
 app.use(session(app));
+// auth
+app.use(oidAuth());
 
 
 
@@ -210,8 +213,6 @@ app.use(proxy({
     },
     whiteRules: proxyWhiteRules //白名单内不代理
 }));
-
-
 
 
 

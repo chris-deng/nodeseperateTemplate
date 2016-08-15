@@ -8,8 +8,7 @@
 
 module.exports = {
     "GET /" : "pages/index",
-    "GET /index" : "pages/index",
-    "GET /upload/image":"pages/pc/upload/upload"
+    "GET /index" : "pages/index"
     // "GET /(index)?/(index)?" : "pages/index",
     // "GET /business/apply" : function(data){
     //   var status=data.business && data.business.businessStatus;

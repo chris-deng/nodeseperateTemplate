@@ -62,11 +62,11 @@ module.exports = function(options) {
             };
             // yield to a thunk
             try{
-                yield function(callback) {
+                yield function(callback) {// 独参-回调（cb）
                     proxy.web(ctx.req, res, callback);
                     res.once('proxyEnd', function(req, res, proxyRes){
                         res.body = Buffer.concat(bodyBuffers);
-                        callback(null, proxyRes);
+                        callback(null, proxyRes);// 首参error
                     });
                 };
             }catch(e){
