@@ -1,6 +1,17 @@
 {
   "port":8888,
+  "remoteServer":{
+    "host": "http://127.0.0.1",
+    "port": 3333
+  },
   "appPath":"app",
   "viewsPath":"/views/dist",
-  "staticPath":["/dist"]
+  "staticPath":"/dist",
+  "nos": {
+    "accessId": "887fbe7bdff64097b45639112283c67c",
+    "accessSecret": "467445ecf9f549cd916cb64f96664515",
+    "host": "nos.netease.com",
+    "port": 80,
+    "bucket": "haitao"
+  }
 }

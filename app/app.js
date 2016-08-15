@@ -84,18 +84,16 @@ app.use(oidAuth());
 /*
  * 请勿随意更改，这里路径命名与webpack设置相配合！！！
  */
-var staticPathList = config.get('staticPath');
-staticPathList.forEach(function(item){
-    // fonts & images & other => '/res',
-    app.use(mount('/res', koastatic(__dirname +"/../app/public"+ item + '/res')));
-    // js & css & sourcemap
-    app.use(mount('/js', koastatic(__dirname +"/../app/public"+ item + '/js')));
-    app.use(mount('/css', koastatic(__dirname +"/../app/public"+ item + '/css')));
-    app.use(mount('/sourcemap', koastatic(__dirname +"/../app/public"+ item + '/sourcemap')));
-});
+var staticPath = config.get('staticPath');
+// fonts & images & other => '/res',
+app.use(mount('/res', koastatic(__dirname +"/../app/public"+ staticPath + '/res')));
+// js & css & sourcemap
+app.use(mount('/js', koastatic(__dirname +"/../app/public"+ staticPath + '/js')));
+app.use(mount('/css', koastatic(__dirname +"/../app/public"+ staticPath + '/css')));
+app.use(mount('/sourcemap', koastatic(__dirname +"/../app/public"+ staticPath + '/sourcemap')));
 // third-part
 app.use(mount('/lib', koastatic(__dirname +"/../app/public/thirdpart")));
-//favicon.ico
+// favicon.ico
 app.use(favicon(path.join(__dirname, '/../app/public', 'favicon.ico')));
 
 
