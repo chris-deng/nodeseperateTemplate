@@ -220,7 +220,7 @@ app.use(proxy({
 console.log("\r\nApp Configuration:");
 console.log("             koa-env = "+colors.yellow(env));
 console.log("process.env.NODE_ENV = "+colors.yellow(process.env.NODE_ENV));
-console.log("          staticPath = "+colors.yellow("app/public"+staticPathList));
+console.log("          staticPath = "+colors.yellow("app/public"+staticPath));
 console.log("            viewPath = "+colors.yellow("app"+viewPath));
 console.log("        RemoteServer = "+colors.yellow(remoteServerUrl)+"\r\n");
 
