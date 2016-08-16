@@ -70,8 +70,11 @@ if(env === 'build'){
  * @param  {String} str
  * @return {String}
  */
+var isWin = process.platform.indexOf("win")>-1;
+var dirSplitChar = !isWin ? '\/' : '\\';
+console.log(isWin?"Windows":"Others");
 function convertPath2CamelCase(str) {
-    var ccWords = str.split('\\').join(' ').replace(/\b\w+\b/g, function(word) {
+    var ccWords = str.split(dirSplitChar).join(' ').replace(/\b\w+\b/g, function(word) {
         return word.substring(0,1).toUpperCase()+word.substring(1);
     });
     ccWords = ccWords.replace(/\s/g, '');//.replace(/\-/g, '');
